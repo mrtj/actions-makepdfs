@@ -16,7 +16,7 @@ inputs:
     required: true
     default: 'tmp'
   assets_dir:
-    description: 'Location of 'template/template.html and styles/markdown[-pdf].css'
+    description: 'Location of template/template.html and styles/markdown[-pdf].css'
     required: true
     default: 'doc_assets'  
 
