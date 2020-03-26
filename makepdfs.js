@@ -128,7 +128,9 @@ fs.readdir (mddir,function(err, files) {
 	}
 	md.use(require('markdown-it-named-headers'), options);
 	var body = md.render(text);
-	makePdf('data:text/html;,' + encodeURIComponent(makeHtml(body)),file);
+	html_str = makeHtml(body);
+	fs.writeFileSync(dir + file + '.html', html_str)
+	makePdf('data:text/html;,' + encodeURIComponent(html_str),file);
       }
    }
 });
