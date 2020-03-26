@@ -15,6 +15,10 @@ inputs:
     description: 'Location to output PDF files to'
     required: true
     default: 'tmp'
+  assets_dir:
+    description: 'Location of 'template/template.html and styles/markdown[-pdf].css'
+    required: true
+    default: 'doc_assets'  
 
 branding:
   icon: 'activity'
