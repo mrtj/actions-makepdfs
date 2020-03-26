@@ -64,7 +64,7 @@ function makePdf(data,file) {
 			const page = await browser.newPage();
 			await page.goto(data, {waitUntil: 'networkidle2'});
 			await page.pdf({
-				path: dir + file + '.pdf',
+				path: dir + 'pdf/' + file + '.pdf',
 				format: 'A4',
 				scale: .9,
 				displayHeaderFooter: false,
@@ -129,8 +129,8 @@ fs.readdir (mddir,function(err, files) {
 	md.use(require('markdown-it-named-headers'), options);
 	var body = md.render(text);
 	html_str = makeHtml(body);
-	fs.writeFileSync(dir + file + '.html', html_str)
-	makePdf('data:text/html;,' + encodeURIComponent(html_str),file);
+	fs.writeFileSync(dir + 'html/' + file.replace('.md','') + '.html', html_str)
+	makePdf('data:text/html;,' + encodeURIComponent(html_str), file);
       }
    }
 });
