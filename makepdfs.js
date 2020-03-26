@@ -80,15 +80,21 @@ function makePdf(data,file) {
 	}
 }
 
-function Slug(string) {
+function Slug(string, used_headers) {
 	try {
-	  var stg = encodeURI(string.trim()
+	  var slug = encodeURI(string.trim()
 		.toLowerCase()
 		.replace(/[\]\[\!\"\#\$\%\&\'\(\)\*\+\,\.\/\:\;\<\=\>\?\@\\\^\_\{\|\}\~\`]/g, '')
 		.replace(/\s+/g, '-')
 		.replace(/^\-+/, '')
 		.replace(/\-+$/, ''));
-	  return stg;
+	    if (used_headers[slug]) {
+	       used_headers[slug]++;
+	       slug += '-' + used_headers[slug];
+            } else {
+               used_headers[slug] = 0;
+            }
+            return slug;
 	} catch (error) {
 	  showErrorMessage('Slug()', error);
 	}
