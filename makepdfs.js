@@ -3,6 +3,9 @@
 const markdown_dir = process.env.INPUT_MARKDOWN_DIR;
 const output_dir = process.env.INPUT_OUTPUT_DIR;
 
+console.log('markdown_dir: ' + markdown_dir);
+console.log('output_dir: ' + output_dir);
+
 'use strict';
 var fs = require( 'fs' );
 var mddir = '/github/workspace/' + markdown_dir;
@@ -95,6 +98,7 @@ if (!fs.existsSync(dir)){
 }
 
 fs.readdir (mddir,function(err, files) {
+   console.log('files found: ' + files);
    for (let file of files) {
       if (path.extname(file) == '.md') {				 
 				var text = fs.readFileSync('doc/' + file).toString('utf-8');
