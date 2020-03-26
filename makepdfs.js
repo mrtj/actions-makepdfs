@@ -96,9 +96,15 @@ function Slug(string) {
 
 var path = require('path');
 
-if (!fs.existsSync(dir)){
-    fs.mkdirSync(dir);
+function create_dir(dirname) {
+    if (!fs.existsSync(dirname)){
+        fs.mkdirSync(dirname);
+    }
 }
+
+create_dir(dir)
+create_dir(dir + 'html/')
+create_dir(dir + 'pdf/')
 
 fs.readdir (mddir,function(err, files) {
    console.log('files found: ' + files);
