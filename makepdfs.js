@@ -101,7 +101,7 @@ fs.readdir (mddir,function(err, files) {
    console.log('files found: ' + files);
    for (let file of files) {
       if (path.extname(file) == '.md') {				 
-				var text = fs.readFileSync('doc/' + file).toString('utf-8');
+				var text = fs.readFileSync(mddir + '/' + file).toString('utf-8');
 				var md = require('markdown-it')({
 					html: true,
 					breaks: true,
