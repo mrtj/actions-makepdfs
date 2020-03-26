@@ -11,6 +11,12 @@ var fs = require( 'fs' );
 var mddir = '/github/workspace/' + markdown_dir;
 var dir = '/github/workspace/' + output_dir + '/';
 
+fs.readdir('/node_modules/puppeteer/.local-chromium', (err, files) => {
+  files.forEach(file => {
+    console.log(file);
+  });
+});
+
 /* 
  * Show an error message 
  */
@@ -51,7 +57,7 @@ function makePdf(data,file) {
 		const puppeteer = require('puppeteer');
 		(async () => {
 				const browser = await puppeteer.launch( {
-				executablePath:'/node_modules/puppeteer/.local-chromium/linux-706915/chrome-linux/chrome',
+// 				executablePath:'/node_modules/puppeteer/.local-chromium/linux-706915/chrome-linux/chrome',
 				args: [
 					'--headless',
 					'--no-sandbox',
