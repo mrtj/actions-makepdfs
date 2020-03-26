@@ -2,14 +2,17 @@
 
 const markdown_dir = process.env.INPUT_MARKDOWN_DIR;
 const output_dir = process.env.INPUT_OUTPUT_DIR;
+const assets_dir = process.env.INPUT_ASSETS_DIR;
 
 console.log('markdown_dir: ' + markdown_dir);
 console.log('output_dir: ' + output_dir);
+console.log('assets_dir: ' + assets_dir);
 
 'use strict';
 var fs = require( 'fs' );
 var mddir = '/github/workspace/' + markdown_dir;
 var dir = '/github/workspace/' + output_dir + '/';
+var asdir = '/github/workspace/' + assets_dir + '/';
 
 /* 
  * Show an error message 
@@ -27,8 +30,8 @@ function showErrorMessage(msg, error) {
 function makeHtml(data) {
 	try {
 		// read files that make up template
-		var style = fs.readFileSync("/styles/markdown.css", ).toString('utf-8') + fs.readFileSync("/styles/markdown-pdf.css", ).toString('utf-8');
-		var template = fs.readFileSync("/template/template.html").toString('utf-8');
+		var style = fs.readFileSync(asdir + "styles/markdown.css").toString('utf-8') + fs.readFileSync(asdir + "styles/markdown-pdf.css", ).toString('utf-8');
+		var template = fs.readFileSync(asdir + "template/template.html").toString('utf-8');
 		// compile template
 		var mustache = require('mustache');
   
